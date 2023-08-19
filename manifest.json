@@ -3,8 +3,9 @@
     "version": "1.0",
     "description": "Basic Calculator",
     "manifest_version": 3,
+    "offline_enabled": true,
     "author": "Gilad Tal",
-    "action":{
+    "browser_action":{
         "default_popup": "calc.html",
         "default_title": "Calculator"
     },
@@ -12,5 +13,6 @@
         {
             "js": ["scripts/calc.js"]
         }
-    ]
+    ],
+    "content_security_policy": "script-src 'self' 'unsafe-eval' https://www.google-analytics.com; object-src 'self'"
 }
