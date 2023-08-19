@@ -1,0 +1,11 @@
+{
+    "name": "Calculator",
+    "version": "1.0",
+    "description": "Basic Calculator",
+    "manifest_version": 3,
+    "author": "Gilad Tal",
+    "action":{
+        "default_popup": "calc.html",
+        "default_title": "Calculator"
+    }
+}
