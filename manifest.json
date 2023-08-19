@@ -7,5 +7,10 @@
     "action":{
         "default_popup": "calc.html",
         "default_title": "Calculator"
-    }
+    },
+    "content_scripts": [
+        {
+            "js": ["scripts/calc.js"]
+        }
+    ]
 }
