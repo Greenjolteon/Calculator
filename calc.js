@@ -1,6 +1,6 @@
 // Click on number
-// Number displays in area
-// User can't type in the area
+// Number displays in input area
+// User can't type in the output area
 
 function numapp(item) {
     let input = document.form.input;
