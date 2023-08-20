@@ -6,17 +6,21 @@
     <meta value="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <style>
-        .calcbody {background-color: white; height:455px; width: 345px; margin-left: 40%;}
+        .calcbody {background-color: white; height:475px; width: 345px; margin-left: 40%;}
         .nums {background-color: black; color: white; height: 75px; width: 75px; margin-left: 5px; margin-top: 2px; margin-bottom: 2px;}
         .beeg {width: 327px; height: 75px; margin-left: 3px; margin-top: 2px; margin-bottom: 2px; background-color: black; color: white;}
-        #space {width: 327px; margin-left: 5px; margin-bottom: 20px;}
+        .space {width: 327px; margin-left: 5px;}
+        .margin {margin-bottom: 20px;}
     </style>
-    <script src="calc.js"></script>
+    <script nonce="MC41NjYxMDE3ODc0" src="calc.js"></script>
 </head>
 <body style="background-color: black;">
     <div class="calcbody">
         <form name="form">
-            <input id="space" type="text" name="output" value="" placeholder="Input" readonly>
+            <div class="margin">
+                <input class="space" type="text" name="input" value="" placeholder="Input">
+                <input class="space" type="text" name="output" value="" placeholder="Answer" readonly>
+            </div>
             <input class="nums" type="button" onclick="numapp(7)" value="7">
             <input class="nums" type="button" onclick="numapp(8)" value="8">
             <input class="nums" type="button" onclick="numapp(9)" value="9">
@@ -32,7 +36,7 @@
             <input class="nums" type="button" onclick="numapp(0)" value="0">
             <input class="nums" type="button" onclick="numapp('.')" value=".">
             <input class="nums" type="button" onclick="equate()" value="=">
-            <input class="nums" type="button" onclick="numapp('/')" value="÷">
+            <input class="nums" type="button" onclick="numapp('/')" value="/">
             <input class="beeg" type="button" onclick="reset()" value="DELETE">
         </form>
     </div>
