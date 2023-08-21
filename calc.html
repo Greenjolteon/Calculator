@@ -6,11 +6,12 @@
     <meta value="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <style>
-        .calcbody {background-color: white; height:390px; width: 425px; border: 2px solid black; border-radius: 4px;}
+        .calcbody {background-color: white; height:430px; width: 425px; border: 2px solid black; border-radius: 4px;}
         .nums {background-color: black; color: white; height: 75px; width: 75px; margin-left: 5px; margin-top: 2px; margin-bottom: 2px;}
         .space {width: 402px; margin-left: 5px;}
         .margin {margin-bottom: 20px;}
         body {display: flex; justify-content: center;}
+        .func {margin-left: 5px; color: black; background-color: white; display: inline-block; margin-right: 19px; margin-left: 19px;}
     </style>
     <script src="scripts/calc.js"></script>
 </head>
@@ -21,26 +22,35 @@
                 <input class="space" type="text" name="input" value="" placeholder="Input">
                 <input class="space" type="text" name="output" value="" placeholder="Answer (Click DELETE to erase)" readonly>
             </div>
-            <input class="nums" type="button" onclick="numapp(7)" value="7">
-            <input class="nums" type="button" onclick="numapp(8)" value="8">
-            <input class="nums" type="button" onclick="numapp(9)" value="9">
-            <input class="nums" type="button" onclick="numapp('(')" value="(">
-            <input class="nums" type="button" onclick="numapp(')')" value=")">
-            <input class="nums" type="button" onclick="numapp(4)" value="4">
-            <input class="nums" type="button" onclick="numapp(5)" value="5">
-            <input class="nums" type="button" onclick="numapp(6)" value="6">
-            <input class="nums" type="button" onclick="numapp('*')" value="x">
-            <input class="nums" type="button" onclick="numapp('/')" value="/">
-            <input class="nums" type="button" onclick="numapp(1)" value="1">
-            <input class="nums" type="button" onclick="numapp(2)" value="2">
-            <input class="nums" type="button" onclick="numapp(3)" value="3">
-            <input class="nums" type="button" onclick="numapp('+')" value="+">
-            <input class="nums" type="button" onclick="numapp('-')" value="-">
-            <input class="nums" type="button" onclick="numapp(0)" value="0">
-            <input class="nums" type="button" onclick="numapp('.')" value=".">
-            <input class="nums" type="button" onclick="equate()" value="=">
-            <input class="nums" type="button" onclick="numapp('^')" value="^">
-            <input class="nums" type="button" onclick="reset()" value="DELETE">
+            <div style="margin-bottom: 20px; width: 405px; height: 21.5px;">
+                <input class="func" type="button" onclick="numapp('log(')" value="log(x)">
+                <input class="func" type="button" onclick="numapp('ln(')" value="ln(x)">
+                <input class="func" type="button" onclick="numapp('loga(')" value="logₐ(x)">
+                <input class="func" type="button" onclick="numapp('e')" value="e">
+                <input class="func" type="button" onclick="numapp('π')" value="π">
+            </div>
+            <div>
+                <input class="nums" type="button" onclick="numapp(7)" value="7">
+                <input class="nums" type="button" onclick="numapp(8)" value="8">
+                <input class="nums" type="button" onclick="numapp(9)" value="9">
+                <input class="nums" type="button" onclick="numapp('(')" value="(">
+                <input class="nums" type="button" onclick="numapp(')')" value=")">
+                <input class="nums" type="button" onclick="numapp(4)" value="4">
+                <input class="nums" type="button" onclick="numapp(5)" value="5">
+                <input class="nums" type="button" onclick="numapp(6)" value="6">
+                <input class="nums" type="button" onclick="numapp('*')" value="x">
+                <input class="nums" type="button" onclick="numapp('/')" value="/">
+                <input class="nums" type="button" onclick="numapp(1)" value="1">
+                <input class="nums" type="button" onclick="numapp(2)" value="2">
+                <input class="nums" type="button" onclick="numapp(3)" value="3">
+                <input class="nums" type="button" onclick="numapp('+')" value="+">
+                <input class="nums" type="button" onclick="numapp('-')" value="-">
+                <input class="nums" type="button" onclick="numapp(0)" value="0">
+                <input class="nums" type="button" onclick="numapp('.')" value=".">
+                <input class="nums" type="button" onclick="equate()" value="=">
+                <input class="nums" type="button" onclick="numapp('^')" value="^">
+                <input class="nums" type="button" onclick="reset()" value="DELETE">
+            </div>
         </form>
     </div>
 </body>
