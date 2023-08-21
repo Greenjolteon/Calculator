@@ -6,39 +6,41 @@
     <meta value="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <style>
-        .calcbody {background-color: white; height:475px; width: 345px; border: 2px solid black; border-radius: 4px;}
+        .calcbody {background-color: white; height:390px; width: 425px; border: 2px solid black; border-radius: 4px;}
         .nums {background-color: black; color: white; height: 75px; width: 75px; margin-left: 5px; margin-top: 2px; margin-bottom: 2px;}
-        .beeg {width: 327px; height: 75px; margin-left: 3px; margin-top: 2px; margin-bottom: 2px; background-color: black; color: white;}
-        .space {width: 327px; margin-left: 5px;}
+        .space {width: 402px; margin-left: 5px;}
         .margin {margin-bottom: 20px;}
         body {display: flex; justify-content: center;}
     </style>
-    <script src="calc.js"></script>
+    <script src="scripts/calc.js"></script>
 </head>
 <body>
     <div class="calcbody">
         <form name="form">
             <div class="margin">
                 <input class="space" type="text" name="input" value="" placeholder="Input">
-                <input class="space" type="text" name="output" value="" placeholder="Answer" readonly>
+                <input class="space" type="text" name="output" value="" placeholder="Answer (Click DELETE to erase)" readonly>
             </div>
             <input class="nums" type="button" onclick="numapp(7)" value="7">
             <input class="nums" type="button" onclick="numapp(8)" value="8">
             <input class="nums" type="button" onclick="numapp(9)" value="9">
-            <input class="nums" type="button" onclick="numapp('+')" value="+">
+            <input class="nums" type="button" onclick="numapp('(')" value="(">
+            <input class="nums" type="button" onclick="numapp(')')" value=")">
             <input class="nums" type="button" onclick="numapp(4)" value="4">
             <input class="nums" type="button" onclick="numapp(5)" value="5">
             <input class="nums" type="button" onclick="numapp(6)" value="6">
-            <input class="nums" type="button" onclick="numapp('-')" value="-">
+            <input class="nums" type="button" onclick="numapp('*')" value="x">
+            <input class="nums" type="button" onclick="numapp('/')" value="/">
             <input class="nums" type="button" onclick="numapp(1)" value="1">
             <input class="nums" type="button" onclick="numapp(2)" value="2">
             <input class="nums" type="button" onclick="numapp(3)" value="3">
-            <input class="nums" type="button" onclick="numapp('*')" value="x">
+            <input class="nums" type="button" onclick="numapp('+')" value="+">
+            <input class="nums" type="button" onclick="numapp('-')" value="-">
             <input class="nums" type="button" onclick="numapp(0)" value="0">
             <input class="nums" type="button" onclick="numapp('.')" value=".">
             <input class="nums" type="button" onclick="equate()" value="=">
-            <input class="nums" type="button" onclick="numapp('/')" value="/">
-            <input class="beeg" type="button" onclick="reset()" value="DELETE">
+            <input class="nums" type="button" onclick="numapp('^')" value="^">
+            <input class="nums" type="button" onclick="reset()" value="DELETE">
         </form>
     </div>
 </body>
