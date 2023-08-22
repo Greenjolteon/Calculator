@@ -45,17 +45,10 @@ function equate() {
 		      if (isDigit(inputValue[i + 3])) {
 		      array[i] = 'l' + 'o' + 'g';
 		      array[i] = array[i].concat(inputValue[i+3]);
-		      array.splice(i-1, 1, '*');
 		      i+=3;
 		      }
 		      else {
-		      array[i] = 'l';
-		      array[i+1] = 'o';
-		      array[i+2] = 'g';
-		      array[i] = array[i].concat(array[i+1]);
-		      array[i] = array[i].concat(array[i+2]);
-		      array.splice(i+1, 2);
-		      array.splice(i-1, 1, '*');
+		      funcs(array, 'l', 'o', 'g', i);
 		      i += 2;
 		      }
 		    }
@@ -64,19 +57,33 @@ function equate() {
 		    array[i+1] = 'n';
 		    array[i] = array[i].concat(array[i+1]);
 		    array.splice(i+1, 1);
-		    array.splice(i-1, 1, '*');
 		    i++;
 		  }
 		  paroi = 0;
-		  }
-        else {
+		}
+		else if (inputValue[i] === 's' && inputValue[i + 1] === 'i' && inputValue[i + 2] === 'n') {
+		      funcs(array, 's', 'i', 'n', i);
+		      i += 2;
+	        paroi = 0;
+		}
+				else if (inputValue[i] === 'c' && inputValue[i + 1] === 'o' && inputValue[i + 2] === 's') {
+		      funcs(array, 'c', 'o', 's', i);
+		      i += 2;
+		      paroi = 0;
+		}
+				else if (inputValue[i] === 't' && inputValue[i + 1] === 'a' && inputValue[i + 2] === 'n') {
+		      funcs(array, 't', 'a', 'n', i);
+		      i += 2;
+		      paroi = 0;
+		}
+		else {
 			array.push(inputValue[i]);
 		}
 
 		if ((inputValue[i + 1] === '(') && (paroi === 1)) {
 			array.push('*');
 		}
-	}
+	  } 
 	
 	console.log("Beginning 1: " + array);
 	//connecting numbers with decimals
@@ -119,6 +126,7 @@ function equate() {
       array[l] = Math.log(parseFloat(array[l + 1]));
       array.splice(l + 1, 1);
     }
+    //solve other logs
     else if (array[l].includes('log')) {
       if (array[l] === 'log') {
         array[l] = Math.log10(parseFloat(array[l + 1]));
@@ -131,13 +139,32 @@ function equate() {
         array.splice(l + 1, 1);
       }
     }
+    //solve sin
+    else if (array[l] === 'sin') {
+        array[l] = Math.sin(parseFloat(array[l + 1]));
+        array.splice(l + 1, 1);
+    }
+        else if (array[l] === 'cos') {
+        array[l] = Math.cos(parseFloat(array[l + 1]));
+        array.splice(l + 1, 1);
+    }
+        else if (array[l] === 'tan') {
+        array[l] = (Math.sin(parseFloat(array[l + 1]))/Math.cos(parseFloat(array[l + 1])));
+        array.splice(l + 1, 1);
+    }
   }
 	console.log("After function solves: " + array);
 
 	// EMDAS
 	array = emdas(array, array.length);
-	if (array.length !== 1) {
+	if (array.length !== 1) { //error unless there is only one thing in the array
 	  array[0] = "Error"
+	}
+	else if (Math.abs(parseFloat(array[0])) < (10 ** -10)){ //if the answer is more than 10^-10 away from 0, it is set to 0
+    array[0] = ('0').toString();
+	}
+	else if (Math.abs(parseFloat(array[0])) > (10 ** 10)){ //if the answer is more than 10^10 away from 0, it is set to Infinity
+    array[0] = ("Infinity").toString();
 	}
 	console.log(array[0]);
 	output.value = array[0];
@@ -211,4 +238,13 @@ function isAlpha(str) {
     const charCode = str.charCodeAt(i);
     return (!(charCode >= 65 && charCode <= 90) && !(charCode >= 97 && charCode <= 122))
   }
+}
+
+function funcs(farray, a, b, c, i) {
+  farray[i] = a;
+	farray[i+1] = b;
+	farray[i+2] = c;
+	farray[i] = farray[i].concat(farray[i+1]);
+	farray[i] = farray[i].concat(farray[i+2]);
+	farray.splice(i+1, 2);
 }
