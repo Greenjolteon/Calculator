@@ -6,12 +6,13 @@
     <meta value="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <style>
-        .calcbody {background-color: white; height:430px; width: 425px; border: 2px solid black; border-radius: 4px;}
+        .calcbody {background-color: white; height:470px; width: 425px; border: 2px solid black; border-radius: 4px;}
         .nums {background-color: black; color: white; height: 75px; width: 75px; margin-left: 5px; margin-top: 2px; margin-bottom: 2px;}
         .space {width: 402px; margin-left: 5px;}
         .margin {margin-bottom: 20px;}
         body {display: flex; justify-content: center;}
         .func {margin-left: 5px; color: black; background-color: white; display: inline-block; margin-right: 19px; margin-left: 19px;}
+        .func-container {margin-bottom: 20px; width: 405px; height: 21.5px; display: grid; grid-template-columns: repeat(3, 125px); gap: 20px;}
     </style>
     <script src="scripts/calc.js"></script>
 </head>
@@ -22,7 +23,12 @@
                 <input class="space" type="text" name="input" value="" placeholder="Input">
                 <input class="space" type="text" name="output" value="" placeholder="Answer (Click DELETE to erase)" readonly>
             </div>
-            <div style="margin-bottom: 20px; width: 405px; height: 21.5px;">
+            <div class="func-container">
+                <input class="func" type="button" onclick="numapp('sin(')" value="sin(x)">
+                <input class="func" type="button" onclick="numapp('cos(')" value="cos(x)">
+                <input class="func" type="button" onclick="numapp('tan(')" value="tan(x)">
+            </div>
+            <div style="margin-bottom: 20px; width: 405px; height: 21.5px; margin-right: 19px;">
                 <input class="func" type="button" onclick="numapp('log(')" value="log(x)">
                 <input class="func" type="button" onclick="numapp('ln(')" value="ln(x)">
                 <input class="func" type="button" onclick="numapp('loga(')" value="logₐ(x)">
