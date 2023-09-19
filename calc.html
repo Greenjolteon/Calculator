@@ -11,8 +11,9 @@
         .space {width: 402px; margin-left: 5px;}
         .margin {margin-bottom: 20px;}
         body {display: flex; justify-content: center;}
-        .func {margin-left: 5px; color: black; background-color: white; display: inline-block; margin-right: 19px; margin-left: 19px;}
-        .func-container {margin-bottom: 20px; width: 405px; height: 21.5px; display: grid; grid-template-columns: repeat(3, 125px); gap: 20px;}
+        .func {color: black; background-color: white; display: inline-block; margin-right: 9px; margin-left: 9px; width: 60px;}
+        .func-container {margin-bottom: 20px; width: 405px; display: grid; grid-template-columns: repeat(6, 50px); gap: 20px;}
+        .func2 {color: black; background-color: white; display: inline-block; margin-right: 9px; margin-left: 9px; width: 60px}
     </style>
     <script src="scripts/calc.js"></script>
 </head>
@@ -24,38 +25,42 @@
                 <input class="space" type="text" name="output" value="" placeholder="Answer (Click DELETE to erase)" readonly>
             </div>
             <div class="func-container">
-                <input class="func" type="button" onclick="numapp('sin(')" value="sin(x)">
-                <input class="func" type="button" onclick="numapp('cos(')" value="cos(x)">
-                <input class="func" type="button" onclick="numapp('tan(')" value="tan(x)">
+                <input class="func2" type="button" onclick="numapp('sin(')" value="sin(x)" title="sine of x">
+                <input class="func2" type="button" onclick="numapp('cos(')" value="cos(x)" title="cosine of x">
+                <input class="func2" type="button" onclick="numapp('tan(')" value="tan(x)" title="tangent of x">
+                <input class="func2" type="button" onclick="numapp('sinh(')" value="sinh(x)" title="hyperbolic sine of x">
+                <input class="func2" type="button" onclick="numapp('cosh(')" value="cosh(x)" title="hyperbolic cosine of x">
+                <input class="func2" type="button" onclick="numapp('tanh(')" value="tanh(x)" title="hyperbolic tangent of x">
             </div>
-            <div style="margin-bottom: 20px; width: 405px; height: 21.5px; margin-right: 19px;">
-                <input class="func" type="button" onclick="numapp('log(')" value="log(x)">
-                <input class="func" type="button" onclick="numapp('ln(')" value="ln(x)">
-                <input class="func" type="button" onclick="numapp('loga(')" value="logₐ(x)">
-                <input class="func" type="button" onclick="numapp('e')" value="e">
-                <input class="func" type="button" onclick="numapp('π')" value="π">
+            <div style="margin-bottom: 20px; width: 405px; display: grid; grid-template-columns: repeat(6, 50px); gap: 20px;">
+                <input class="func" type="button" onclick="numapp('log(')" value="log(x)" title="logarithm of x">
+                <input class="func" type="button" onclick="numapp('ln(')" value="ln(x)" title="natural logarithm">
+                <input class="func" type="button" onclick="numapp('!')" value="x!"  title="factorial of x">
+                <input class="func" type="button" onclick="numapp('√(')" value="√" title="Square Root">
+                <input class="func" type="button" onclick="numapp('e')" value="e" title="Euler's Number">
+                <input class="func" type="button" onclick="numapp('π')" value="π" title="Pi">
             </div>
             <div>
-                <input class="nums" type="button" onclick="numapp(7)" value="7">
-                <input class="nums" type="button" onclick="numapp(8)" value="8">
-                <input class="nums" type="button" onclick="numapp(9)" value="9">
-                <input class="nums" type="button" onclick="numapp('(')" value="(">
-                <input class="nums" type="button" onclick="numapp(')')" value=")">
-                <input class="nums" type="button" onclick="numapp(4)" value="4">
-                <input class="nums" type="button" onclick="numapp(5)" value="5">
-                <input class="nums" type="button" onclick="numapp(6)" value="6">
-                <input class="nums" type="button" onclick="numapp('*')" value="x">
-                <input class="nums" type="button" onclick="numapp('/')" value="/">
-                <input class="nums" type="button" onclick="numapp(1)" value="1">
-                <input class="nums" type="button" onclick="numapp(2)" value="2">
-                <input class="nums" type="button" onclick="numapp(3)" value="3">
-                <input class="nums" type="button" onclick="numapp('+')" value="+">
-                <input class="nums" type="button" onclick="numapp('-')" value="-">
-                <input class="nums" type="button" onclick="numapp(0)" value="0">
-                <input class="nums" type="button" onclick="numapp('.')" value=".">
-                <input class="nums" type="button" onclick="equate()" value="=">
-                <input class="nums" type="button" onclick="numapp('^')" value="^">
-                <input class="nums" type="button" onclick="reset()" value="DELETE">
+                <input class="nums" type="button" onclick="numapp(7)" value="7" title="7">
+                <input class="nums" type="button" onclick="numapp(8)" value="8" title="8">
+                <input class="nums" type="button" onclick="numapp(9)" value="9" title="9">
+                <input class="nums" type="button" onclick="numapp('(')" value="(" title="(">
+                <input class="nums" type="button" onclick="numapp(')')" value=")" title=")">
+                <input class="nums" type="button" onclick="numapp(4)" value="4" title="4">
+                <input class="nums" type="button" onclick="numapp(5)" value="5" title="5">
+                <input class="nums" type="button" onclick="numapp(6)" value="6" title="6">
+                <input class="nums" type="button" onclick="numapp('*')" value="x" title="Multiplication">
+                <input class="nums" type="button" onclick="numapp('/')" value="/" title="Division">
+                <input class="nums" type="button" onclick="numapp(1)" value="1" title="1">
+                <input class="nums" type="button" onclick="numapp(2)" value="2" title="2">
+                <input class="nums" type="button" onclick="numapp(3)" value="3" title="3">
+                <input class="nums" type="button" onclick="numapp('+')" value="+" title="Addition">
+                <input class="nums" type="button" onclick="numapp('-')" value="-" title="Subtraction">
+                <input class="nums" type="button" onclick="numapp(0)" value="0" title="0">
+                <input class="nums" type="button" onclick="numapp('.')" value="." title="Decimal Point">
+                <input class="nums" type="button" onclick="equate()" value="=" title="Solve">
+                <input class="nums" type="button" onclick="numapp('^')" value="^" title="Exponent">
+                <input class="nums" type="button" onclick="reset()" value="DELETE" title="Delete">
             </div>
         </form>
     </div>
