@@ -1,23 +1,19 @@
-function numapp(item) {
-	document.form.input.value += item;
-}
+//Add thing where and int next to parentheses add a multiplication sign in between
+//Example: 999(e) returns error
+//Also ass thing similar to the fractions, such as if the solution is √7, return √7, not 2.6457513111
 
-function reset() {
-	let input = document.form.input.value = "";
-}
+function numapp(item) {document.form.input.value += item;}
 
-document.addEventListener("keydown", (function(e) {
-	"Enter" === e.key && equate()
-}));
+function reset() {let input = document.form.input.value = "";}
+
+document.addEventListener("keydown", (function(e) {"Enter" === e.key && equate()}));
 
 function equate() {
 	let input = document.form.input;
 	let out = document.form.output;
-	let array = input.value.match(/([0-9.]+|[+\-*/()√!]|log|ln|sin|cos|tan|sinh|cosh|tanh|π|e)/g);
+	let array = input.value.match(/([0-9.]+|[+\-*^/()√!]|log|ln|sin|cos|tan|sinh|cosh|tanh|π|e)/g);
 
-	for (let l=0; l<array.length; l++) {
-		if ((constCheck(array[l]) !== array[l]) && isDigit(array[l - 1])) {array.splice(l, 0, '*');}
-	}
+	for (let l=0; l<array.length; l++) {if ((constCheck(array[l]) !== array[l]) && isDigit(array[l - 1])) {array.splice(l, 0, '*');}}
 	console.log("Array: " + array);
 
 	const precedence = {'^': 4,  '√': 3, 'sin': 3, 'cos': 3, 'tan': 3, 'sinh': 3, 'cosh': 3, 'tanh': 3, 'log': 3, 'ln': 3, '!': 3, '*': 2, '/': 2, '+': 1, '-': 1,};
