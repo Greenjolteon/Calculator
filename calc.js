@@ -16,7 +16,7 @@ function equate() {
 	let array = input.value.match(/([0-9.]+|[+\-*/()√!]|log|ln|sin|cos|tan|sinh|cosh|tanh|π|e)/g);
 
 	for (let l=0; l<array.length; l++) {
-		if ((constCheck(array[l]) !== l) && isDigit(array[l - 1])) {array.splice(l, 0, '*');}
+		if ((constCheck(array[l]) !== array[l]) && isDigit(array[l - 1])) {array.splice(l, 0, '*');}
 	}
 	console.log("Array: " + array);
 
