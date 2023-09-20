@@ -6,22 +6,23 @@
     <meta value="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <style>
-        .calcbody {background-color: white; height:470px; width: 425px; border: 2px solid black; border-radius: 4px;}
+        .calcbody {background-color: white; height:485px; border: 2px solid black; border-radius: 4px; margin: 10px;}
         .nums {background-color: black; color: white; height: 75px; width: 75px; margin-left: 5px; margin-top: 2px; margin-bottom: 2px;}
-        .space {width: 402px; margin-left: 5px;}
+        .space {width: 98%; margin: auto;}
         .margin {margin-bottom: 20px;}
         body {display: flex; justify-content: center;}
-        .func {color: black; background-color: white; display: inline-block; margin-right: 9px; margin-left: 9px; width: 60px;}
+        .func {color: black; background-color: white; display: inline-block; margin: 9px; width: 60px;}
         .func-container {margin-bottom: 20px; width: 405px; display: grid; grid-template-columns: repeat(6, 50px); gap: 20px;}
         .func2 {color: black; background-color: white; display: inline-block; margin-right: 9px; margin-left: 9px; width: 60px}
     </style>
     <script src="scripts/calc.js"></script>
+    <script src="scripts/varcalc.js"></script>
 </head>
 <body>
-    <div class="calcbody">
+    <div class="calcbody" style="width: 425px;">
         <form name="form">
             <div class="margin">
-                <input class="space" type="text" name="input" value="" placeholder="Input">
+                <input class="space" type="text" name="input" value="" placeholder="Input" style="margin-bottom: 2px;">
                 <input class="space" type="text" name="output" value="" placeholder="Answer (Click DELETE to erase)" readonly>
             </div>
             <div class="func-container">
@@ -62,6 +63,11 @@
                 <input class="nums" type="button" onclick="numapp('^')" value="^" title="Exponent">
                 <input class="nums" type="button" onclick="reset()" value="DELETE" title="Delete">
             </div>
+        </form>
+    </div>
+    <div class="calcbody" style="width: 925px;">
+        <form name="form2">
+            <input class="space" type="text" name="input2" value="" placeholder="Input">
         </form>
     </div>
 </body>
