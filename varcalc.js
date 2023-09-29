@@ -56,6 +56,12 @@ function graph(h) {
 	  '+': '-'
 	}
 
+/*
+Plan:
+goes through the equation, takes note of where the thing with the largest precedence is
+Then finds its opposite and does it to the solution
+*/
+
 	//change from normal equation to RPN
 
 	let output = [];
