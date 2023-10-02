@@ -24,19 +24,16 @@ Divide both sides by -3: x=(-2±3i√2)/3
 Going by PEMDAS, and then doing the opposite
 */
 
-
-
-
 function graph(h) {
 	let array = h.match(/([0-9.]+|[+\-*^/()√!]|x|log|ln|sin|cos|tan|sinh|cosh|tanh|π|e)/g);
 
   for (let l=0; l<array.length; l++) {if ((constCheck(array[l]) !== array[l] || array[l] === 'x') && isDigit(array[l - 1])) {array.splice(l, 0, '*');}}
 	console.log("Array: " + array);
 
-	const precedence = {'^': 4,  '√': 3, 'sin': 3, 'cos': 3, 'tan': 3, 'sinh': 3, 'cosh': 3, 'tanh': 3, 'log': 3, 'ln': 3, '!': 3, '*': 2, '/': 2, '+': 1, '-': 1,};
+	const precedence = {'^': 4,  '√': 3, 'sin': 3, 'cos': 3, 'tan': 3, 'sinh': 3, 'cosh': 3, 'tanh': 3, 'log': 3, 'ln': 3, '*': 2, '/': 2, '+': 1, '-': 1,};
 	//put all functions not in emdas between ^ and *
 
-	const associative = {'^': 0,  '√': 1, 'sin': 1, 'cos': 1, 'tan': 1, 'sinh': 1, 'cosh': 1, 'tanh': 1, 'log': 1, 'ln': 1, '!': 1, '*': 1, '/': 1, '+': 1, '-': 1,};
+	const associative = {'^': 0,  '√': 1, 'sin': 1, 'cos': 1, 'tan': 1, 'sinh': 1, 'cosh': 1, 'tanh': 1, 'log': 1, 'ln': 1, '*': 1, '/': 1, '+': 1, '-': 1,};
 	
 	const opposites = {
 	  '^': '√', 
@@ -48,8 +45,7 @@ function graph(h) {
 	  'cosh': 'arccosh', 
 	  'tanh': 'arctanh', 
 	  'log': '10**', 
-	  'ln': 'e**',
-	  '!': NaN,
+	  'ln': 'exp',
 	  '*': '/',
 	  '/': '*',
 	  '-': '+',
@@ -58,108 +54,61 @@ function graph(h) {
 
 /*
 Plan:
+Ignore anything that is in parentheses until they are both on the outside
+
 goes through the equation, takes note of where the thing with the largest precedence is
 Then finds its opposite and does it to the solution
 */
+let nArray;
 
-	//change from normal equation to RPN
+if (array.includes('(') && array.includes(')')) {
+  let lP = array.indexOf('(');
+  let rP = array.indexOf(')');
+  nArray = array.splice(0, rP+1);
+  nArray.shift();
+  nArray.pop();
+  console.log("New array: " + nArray);
+  console.log("Old array: " + array + "\nArray length: " + array.length);
+}
 
-	let output = [];
-	let stack = [];
+let pre = 0;
+let pos = 0;
+let thing;
 
-	for (let j = 0; j < array.length; j++) {
-		let x = array[j];
-		if (isDigit(x) || x == 'x') {
-			output.push(constCheck(x));
-		} else if (x == '(') {
-			stack.push(x);
-		} else if (isOperator(x)) {
-			while ((isOperator(stack[stack.length - 1])) && (stack.length > 0) &&
-				(associative[x] === 1 && precedence[x] <= precedence[stack[stack.length - 1]]) ||
-				(associative[x] === 0 && precedence[x] < precedence[stack[stack.length - 1]])) {
-				output.push(stack.pop());
-			}
-			stack.push(x);
-		} else if (x == ')') {
-			while (stack[stack.length - 1] !== '(') {
-				output.push(stack.pop());
-			}
-			stack.pop();
-		}
-	}
-	while (stack.length > 0) {
-		output.push(stack.pop());
-	}
-
-console.log("Final Output in RPN: " + output);
-console.log(output.length);
+for (let i=0; i<=array.length; i++) {
+  if (isOperator(array[i]) && (precedence[array[i]]) > pre) {
+    pre = precedence[array[i]];
+    thing = array[i];
+    pos = i;
+  }
+}
+console.log("Pos: " + pos + ", Pre: " + pre + ", Thing: " + thing);
 
 let solution = 0;
 
-for (let i=output.length-1; i>=0; i--) {
-  console.log("BCurrent Solution #" + i + ": x=" + solution);
-  console.log("BCurrent output #" + i + ": " + output);
-  switch (output[i]) {
-    case '+':
-      if (output[i] !== 'x') {
-        solution -= parseFloat(output[i-1]);
-      }
-      break;
-    case '-':
-      if (output[i] !== 'x') {
-        solution += parseFloat(output[i-1]);
-      }
-      break;
-    case '*':
-      if (output[i] !== 'x') {
-        solution /= parseFloat(output[i-1]);
-      }
-      break;
-    case '/':
-      if (output[i] !== 'x') {
-        solution *= parseFloat(output[i-1]);
-      }
-      i++;
-      break;
-    case '^':
-      solution ** (1/parseFloat(output[i-1]));
-      break;
-    default:
-      break;
+for (let j=0; j<array.length; j++) {
+  if (isOperator(array[j])) {
+      array[j] = opposites[array[j]];
+      console.log("Old array: " + array + "\nArray length: " + array.length);
   }
-  output.pop();
-  console.log("Current Solution #" + i + ": x=" + solution);
-  console.log("Current output #" + i + ": " + output);
 }
+array.unshift('0');
+solution = equate(array.join(''));
 
-/*
-for (let i=output.length; i>0; i--) {
-  switch (output[i]) {
-    case '+':
-      solution -= parseFloat(output[i-1]);
-      break;
-    case '-':
-      solution += parseFloat(output[i-1]);
-      i--;
-      break;
-    case '*':
-      solution /= parseFloat(output[i-1]);
-      i--;
-      break;
-    case '/':
-      solution *= parseFloat(output[i-1]);
-      break;
-    case '^':
-      solution ** (1/parseFloat(output[i-1]));
-      break;
-    default:
-      break;
+console.log("Solution: " + nArray.join('') + "=" + solution);
+
+pre = 0;
+pos = 0;
+thing;
+
+for (let i=0; i<=nArray.length; i++) {
+  if (isOperator(nArray[i]) && (precedence[nArray[i]]) > pre) {
+    pre = precedence[nArray[i]];
+    thing = nArray[i];
+    pos = i;
   }
-  console.log("Current Solution: x=" + solution);
 }
-*/
-
-console.log("Solution: x=" + solution);
+console.log("Pos: " + pos + ", Pre: " + pre + ", Thing: " + thing);
 }
 
 function constCheck(t) {
@@ -195,6 +144,7 @@ function isOperator(op) {
 	)
 }
 
-graph("(2x-3)/3");
+//equate function
 
+graph("(2x-3)-3+7");
 
